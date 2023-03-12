@@ -1,5 +1,8 @@
 <template>
-  <div class="q-pa-md row justify-center q-gutter-x-lg q-gutter-y-lg">
+  <div
+    v-if="songs.length>0"
+    class="q-pa-md row justify-center q-gutter-x-lg q-gutter-y-lg"
+  >
     <q-card
       v-for="(song, index) in songs"
       :key="song.title"
@@ -25,6 +28,21 @@
           @ended="playNext(index)"
           @play="isPlaying(index)"
         />
+      </q-card-section>
+    </q-card>
+  </div>
+  <div
+    v-else
+    class="q-pa-md row justify-center q-gutter-x-lg q-gutter-y-lg"
+  >
+    <q-card
+      style="min-width: 400px; max-width: 400px"
+      class="transparent"
+    >
+      <q-card-section class="bg-primary text-white">
+        <div class="text-h6">
+          No songs found
+        </div>
       </q-card-section>
     </q-card>
   </div>
@@ -57,5 +75,4 @@ function isPlaying (index) {
     }
   })
 }
-
 </script>
