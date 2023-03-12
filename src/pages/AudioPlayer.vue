@@ -11,6 +11,7 @@
     >
       <q-card-section
         class="row bg-primary text-white justify-between"
+        :class="{ 'bg-accent': playingAudio[index] }"
       >
         <div class="text-h6">
           {{ index + 1 }}: {{ song.title }}
@@ -27,15 +28,13 @@
             flat
             round
             icon="more_horiz"
-            @click="
-              audioRefs[index].pause()"
+            @click="toggleHidden(index)"
           />
         </div>
       </q-card-section>
-      <q-separator />
       <q-card-section
         ref="audioSectionRefs"
-        :class="{ hidden: !playingAudio[index] }"
+        :class="{ hidden:!showingAudio[index] }"
       >
         <audio
           ref="audioRefs"
@@ -73,6 +72,7 @@ const audioRefs = ref([])
 const btnRefs = ref([])
 const audioSectionRefs = ref([])
 const playingAudio = ref([])
+const showingAudio = ref([])
 function playNext (index) {
   // count of audioRefs
   const count = audioRefs.value.length
@@ -81,16 +81,20 @@ function playNext (index) {
     audioRefs.value[index].pause()
     audioRefs.value[index].currentTime = 0
     playingAudio.value[index] = false
+    // showingAudio.value[index] = false
     audioRefs.value[0].currentTime = 0
     audioRefs.value[0].play()
     playingAudio.value[0] = true
+    // showingAudio.value[0] = true
   } else { // play next audioRef
     audioRefs.value[index].pause()
     audioRefs.value[index].currentTime = 0
     playingAudio.value[index] = false
+    // showingAudio.value[index] = false
     audioRefs.value[index + 1].currentTime = 0
     audioRefs.value[index + 1].play()
     playingAudio.value[index + 1] = true
+    // showingAudio.value[index + 1] = true
   }
 }
 function isPlaying (index) {
@@ -109,9 +113,13 @@ function togglePlay (index) {
   } else {
     audioRefs.value[index].play()
     playingAudio.value[index] = true
+    // showingAudio.value[index] = true
   }
 }
 function getPlayButtonIcon (index) {
   return playingAudio.value[index] ? 'pause' : 'play_arrow'
+}
+function toggleHidden (index) {
+  showingAudio.value[index] = !showingAudio.value[index]
 }
 </script>
