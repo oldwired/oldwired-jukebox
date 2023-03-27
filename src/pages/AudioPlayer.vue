@@ -39,7 +39,7 @@
         <audio
           ref="audioRefs"
           class="fg-primary text-white"
-          :src="'/data/'+song.path"
+          :src="'data/'+song.path"
           type="audio/mpeg"
           controls
           preload="none"

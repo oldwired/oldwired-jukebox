@@ -2,7 +2,6 @@
   <q-layout view="lHh Lpr lFf">
     <q-header>
       <q-toolbar>
-
         <q-toolbar-title>
           <q-avatar>
             <img src="~/assets/peacock.png">
@@ -10,7 +9,7 @@
           oldwired Jukebox
         </q-toolbar-title>
 
-        <div></div>
+        <div />
       </q-toolbar>
     </q-header>
     <q-page-container>
@@ -20,7 +19,9 @@
       <q-toolbar>
         <q-toolbar-title>
           <div class="row justify-end">
-          <div class="col"> {{ new Date().getUTCFullYear() }} - oldwired </div>
+            <div class="col">
+              {{ new Date().getUTCFullYear() }} - oldwired
+            </div>
           </div>
         </q-toolbar-title>
       </q-toolbar>

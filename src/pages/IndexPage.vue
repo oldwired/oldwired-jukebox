@@ -16,7 +16,7 @@ import { onMounted, ref } from 'vue'
 import AudioPlayer from 'pages/AudioPlayer.vue'
 // read json data from file
 const getSongs = async () => {
-  const response = await fetch('/data/songs.json')
+  const response = await fetch('data/songs.json')
   const data = await response.json()
   return data
 }
