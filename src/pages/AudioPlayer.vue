@@ -45,6 +45,7 @@
           preload="none"
           @ended="playNext(index)"
           @play="isPlaying(index)"
+          @volumechange="volumeChanging(index)"
         />
       </q-card-section>
     </q-card>
@@ -121,5 +122,12 @@ function getPlayButtonIcon (index) {
 }
 function toggleHidden (index) {
   showingAudio.value[index] = !showingAudio.value[index]
+}
+function volumeChanging (index) {
+  audioRefs.value.forEach((audio, i) => {
+    if (i !== index) {
+      audio.volume = audioRefs.value[index].volume
+    }
+  })
 }
 </script>
