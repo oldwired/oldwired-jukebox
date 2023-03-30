@@ -77,26 +77,25 @@ const playingAudio = ref([])
 const showingAudio = ref([])
 const audioInfo = audioInfoStore()
 
+function doStopPosZero (index) {
+  audioRefs.value[index].currentTime = 0
+  doStop(index)
+}
+
+function doPlaySetZero (index) {
+  audioRefs.value[index].currentTime = 0
+  doPlay(index)
+}
+
 function playNext (index) {
   // count of audioRefs
   const count = audioRefs.value.length
+  doStopPosZero(index)
   // if last audioRef, play first
   if (index === count - 1) {
-    audioRefs.value[index].pause()
-    audioRefs.value[index].currentTime = 0
-    playingAudio.value[index] = false
-    audioRefs.value[0].currentTime = 0
-    audioRefs.value[0].volume = audioInfo.volume
-    audioRefs.value[0].play()
-    playingAudio.value[0] = true
+    doPlaySetZero(0)
   } else { // play next audioRef
-    audioRefs.value[index].pause()
-    audioRefs.value[index].currentTime = 0
-    playingAudio.value[index] = false
-    audioRefs.value[index + 1].currentTime = 0
-    audioRefs.value[index + 1].volume = audioInfo.volume
-    audioRefs.value[index + 1].play()
-    playingAudio.value[index + 1] = true
+    doPlaySetZero(index + 1)
   }
 }
 function isPlaying (index) {
@@ -108,15 +107,23 @@ function isPlaying (index) {
     }
   })
 }
+
+function doStop (index) {
+  audioRefs.value[index].pause()
+  playingAudio.value[index] = false
+}
+
+function doPlay (index) {
+  audioRefs.value[index].volume = audioInfo.volume
+  audioRefs.value[index].play()
+  playingAudio.value[index] = true
+}
+
 function togglePlay (index) {
   if (playingAudio.value[index]) {
-    audioRefs.value[index].pause()
-    playingAudio.value[index] = false
+    doStop(index)
   } else {
-    audioRefs.value[index].volume = audioInfo.volume
-    audioRefs.value[index].play()
-    playingAudio.value[index] = true
-    // showingAudio.value[index] = true
+    doPlay(index)
   }
 }
 function getPlayButtonIcon (index) {
