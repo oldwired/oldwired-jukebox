@@ -10,15 +10,16 @@
       class="transparent"
     >
       <q-card-section
-        class="row bg-primary text-white justify-between"
+        class="row dimmed justify-between"
         :class="{ 'bg-accent': playingAudio[index] }"
       >
-        <div class="text-h6">
+        <div class="text-h5 text-bold text-grey-3 z-top">
           {{ index + 1 }}: {{ song.title }}
         </div>
-        <div>
+        <div class="z-top">
           <q-btn
             ref="btnRefs"
+            class="text-grey-3"
             flat
             round
             :icon="getPlayButtonIcon(index)"
@@ -26,6 +27,7 @@
           />
           <q-btn
             flat
+            class="text-grey-3"
             round
             icon="more_horiz"
             @click="toggleHidden(index)"
