@@ -1,8 +1,8 @@
 {
   "name": "oldwire-jukebox",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Dynamic Jukebox",
-  "productName": "oldwired Jukebox",
+  "productName": "Synthreff 6 - Jukebox",
   "author": "Andreas Pfau <a.pfau@pfau.de>",
   "private": true,
   "scripts": {

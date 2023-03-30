@@ -6,14 +6,14 @@
     <q-card
       v-for="(song, index) in songs"
       :key="song.title"
-      style="min-width: 400px; max-width: 400px"
+      style="min-width: 500px; max-width: 500px"
       class="transparent"
     >
       <q-card-section
         class="row bg-primary text-white justify-between"
-        :class="{ 'bg-accent': playingAudio[index] }"
+        :class="{ 'bg-accent': playingAudio[index], 'transparent': !playingAudio[index]}"
       >
-        <div class="text-h6">
+        <div class="text-h5 text-bold text-grey-2">
           {{ index + 1 }}: {{ song.title }}
         </div>
         <div>
@@ -38,7 +38,6 @@
       >
         <audio
           ref="audioRefs"
-          class="fg-primary text-white"
           :src="'data/'+song.path"
           type="audio/mpeg"
           controls
