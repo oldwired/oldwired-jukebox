@@ -68,12 +68,15 @@
 </template>
 <script setup>
 import { ref } from 'vue'
+import { audioInfoStore } from 'stores/audio_info'
 defineProps(['songs'])
 const audioRefs = ref([])
 const btnRefs = ref([])
 const audioSectionRefs = ref([])
 const playingAudio = ref([])
 const showingAudio = ref([])
+const audioInfo = audioInfoStore()
+
 function playNext (index) {
   // count of audioRefs
   const count = audioRefs.value.length
@@ -82,20 +85,18 @@ function playNext (index) {
     audioRefs.value[index].pause()
     audioRefs.value[index].currentTime = 0
     playingAudio.value[index] = false
-    // showingAudio.value[index] = false
     audioRefs.value[0].currentTime = 0
+    audioRefs.value[0].volume = audioInfo.volume
     audioRefs.value[0].play()
     playingAudio.value[0] = true
-    // showingAudio.value[0] = true
   } else { // play next audioRef
     audioRefs.value[index].pause()
     audioRefs.value[index].currentTime = 0
     playingAudio.value[index] = false
-    // showingAudio.value[index] = false
     audioRefs.value[index + 1].currentTime = 0
+    audioRefs.value[index + 1].volume = audioInfo.volume
     audioRefs.value[index + 1].play()
     playingAudio.value[index + 1] = true
-    // showingAudio.value[index + 1] = true
   }
 }
 function isPlaying (index) {
@@ -112,6 +113,7 @@ function togglePlay (index) {
     audioRefs.value[index].pause()
     playingAudio.value[index] = false
   } else {
+    audioRefs.value[index].volume = audioInfo.volume
     audioRefs.value[index].play()
     playingAudio.value[index] = true
     // showingAudio.value[index] = true
@@ -124,10 +126,6 @@ function toggleHidden (index) {
   showingAudio.value[index] = !showingAudio.value[index]
 }
 function volumeChanging (index) {
-  audioRefs.value.forEach((audio, i) => {
-    if (i !== index) {
-      audio.volume = audioRefs.value[index].volume
-    }
-  })
+  audioInfo.volume = audioRefs.value[index].volume
 }
 </script>
