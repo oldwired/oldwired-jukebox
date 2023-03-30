@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-toolbar-title>
           <q-avatar>
-            <img src="~/assets/peacock.png">
+            <img src="~/assets/icon.png">
           </q-avatar>
           oldwired Jukebox
         </q-toolbar-title>

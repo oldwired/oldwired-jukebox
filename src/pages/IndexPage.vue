@@ -3,8 +3,8 @@
     <div class="q-pa-md self-center">
       <q-img
         alt="Crazy Eyes"
-        src="images/eyes.gif"
-        style="width: 240px; height: 180px"
+        src="images/jukebox.png"
+        style="width: 240px; height: 240px"
       />
     </div>
     <audioPlayer :songs="songs" />
@@ -28,8 +28,8 @@ onMounted(async () => {
 </script>
 <style>
 .bg-image {
-  background-image: url("/images/background.gif");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url("/images/background.png");
+  background-repeat: repeat;
+  background-size: auto;
 }
 </style>
