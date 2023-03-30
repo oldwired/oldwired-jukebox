@@ -6,7 +6,7 @@
           <q-avatar>
             <img src="~/assets/icon.png">
           </q-avatar>
-          oldwired Jukebox
+          Synthtreff 6 - Jukebox
         </q-toolbar-title>
 
         <div />
