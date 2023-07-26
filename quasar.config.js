@@ -65,7 +65,7 @@ module.exports = configure(function (/* ctx */) {
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      publicPath: 'jukebox/synthtreff6'
+      publicPath: 'jukebox/synthtreff7'
       // analyze: true,
       // env: {},
       // rawDefine: {}

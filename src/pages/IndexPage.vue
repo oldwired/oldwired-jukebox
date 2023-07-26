@@ -2,7 +2,7 @@
   <q-page class="column justify-start bg-image">
     <div class="q-pa-md self-center">
       <q-img
-        alt="Crazy Eyes"
+        alt="Jukebox"
         src="images/jukebox.png"
         style="width: 240px; height: 240px"
       />

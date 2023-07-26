@@ -6,7 +6,7 @@
           <q-avatar>
             <img src="~/assets/icon.png">
           </q-avatar>
-          Synthtreff 6 - Jukebox
+          Synthtreff 7 - Jukebox
         </q-toolbar-title>
 
         <div />
